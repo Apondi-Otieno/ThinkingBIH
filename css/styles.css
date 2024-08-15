@@ -3203,7 +3203,7 @@ td:last-child {
 	position        : absolute;
 	top             : var(--vspace-0_75);
 	left            : 0;
-	padding-top: 1rem;
+	
 }
 
 .s-header__inner {
