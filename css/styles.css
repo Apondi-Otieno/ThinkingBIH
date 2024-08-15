@@ -4155,13 +4155,15 @@ td:last-child {
 .s-cta {
 	padding-top     : var(--vspace-4_5);
 	padding-bottom  : var(--vspace-3_5);
-	background-color: var(--color-2-dark);
+	/* background-color: var(--color-2-dark) ; */
+	background-color: #181818;
 	color           : var(--color-3);
 }
 
 .s-cta .text-pretitle {
 	color: var(--color-2);
 }
+
 
 .s-cta .text-display-title {
 	color: var(--color-3);
@@ -4193,8 +4195,8 @@ td:last-child {
 .s-journal {
 	padding-top     : var(--vspace-6);
 	padding-bottom  : var(--vspace-3);
-	background-color: #181818;
-	color           : rgba(255, 255, 255, 0.6);
+	background-color: hsla(35, 87%, 29%, 1);
+	color           : var(--color-3);
 	border-bottom   : 1px solid rgba(255, 255, 255, 0.05);
 }
 
