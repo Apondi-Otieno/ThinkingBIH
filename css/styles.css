@@ -4010,11 +4010,14 @@ td:last-child {
 }
 
 /* payment page */
+#paypal-button-container {
+    display: block; /* Ensure it's not set to 'none' */
+}
 
 #pay{
 	background-color:white;
 	color: #181818;
-	padding-top: 23rem;
+	padding-top: 10rem;
 }
 
 #pay1{
