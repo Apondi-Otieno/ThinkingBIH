@@ -4017,8 +4017,8 @@ td:last-child {
  *
  * ------------------------------------------------------------------- */
 .s-expertise {
-	padding-top   : var(--vspace-6);
-	padding-bottom: var(--vspace-5);
+	padding-top   : var(--vspace-3);
+	padding-bottom: var(--vspace-3);
 }
 
 .s-expertise__content-main {
