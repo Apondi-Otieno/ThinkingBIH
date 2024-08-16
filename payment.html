@@ -91,11 +91,122 @@
                 <div class="column xl-8 lg-12">
                         <h2 id="pay1" class="text-display-title">
                         Pay for your consultation here.
-                        </h2>
-                        <p class="lead">A small fee is required to secure your consultation. Please choose your payment method below:</p>
+                        </h2> </div></div>
+</section>
+
+<section class="s-pagecontent pagecontent">
+                <div class="column xl-6 lg-12">
+                    <h4>A small fee is required to secure your consultation. Please pay using the details below:</h4>
+                        <p>Lipa na Mpesa<br>
+                        Paybill -303030<br>
+                        ACC Number - 2048477146<br>
+                        </p> </div>
+<div class="column xl-6 lg-12 u-flexitem-x-right">
+
+<h2>Submit Your M-Pesa Receipt</h2>
+<p>Please enter your phone number and M-Pesa receipt number to confirm your payment.</p>
+
+<form action="" method="POST">
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" placeholder="e.g., 2547XXXXXXXX" required><br><br>
+
+    <label for="receipt">M-Pesa Receipt Number:</label>
+    <input type="text" id="receipt" name="receipt" placeholder="e.g., ABC123XYZ" required><br><br>
+
+    <button type="submit">Submit Receipt</button>
+</form>
+</div>
+</section>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Capture the form data
+    $phone = $_POST['phone'];
+    $receipt = $_POST['receipt'];
+
+    // Simulate sending an SMS with receipt details (replace with actual SMS API)
+    $sms_api_url = "https://sms-api.example.com/send";
+    $sms_message = "M-Pesa receipt received from $phone: $receipt";
+
+    // Example API call (replace with actual implementation)
+    // $response = file_get_contents("$sms_api_url?to=$phone&message=" . urlencode($sms_message));
+
+    // Redirect to booking page after successful submission
+    header("Location: booking_page.php");
+    exit();
+}
+?>
                         <!-- add payment methods here -->
 
-                        
+                        <script type="text/javascript" src="https://checkout.flutterwave.com/v3.js"></script>
+
+                            <button type="button" onClick="makePayment()">Pay with M-Pesa</button>
+
+                            <script>
+                            function makePayment() {
+                                FlutterwaveCheckout({
+                                public_key: "YOUR_PUBLIC_KEY",
+                                tx_ref: "hooli-tx-1920bbtytty",
+                                amount: 100,
+                                currency: "KES",
+                                payment_options: "mpesa",
+                                redirect_url: "https://your-redirect-url.com",
+                                customer: {
+                                    email: "user@example.com",
+                                    phonenumber: "07064586146",
+                                    name: "Yemi Desola",
+                                },
+                                callback: function (data) { // specified callback function
+                                    console.log(data);
+                                },
+                                customizations: {
+                                    title: "My Store",
+                                    description: "Payment for items in cart",
+                                    logo: "https://assets.piedpiper.com/logo.png",
+                                },
+                                });
+                            }
+                            </script>
+
+                            <script src="https://www.paypal.com/sdk/js?client-id=AQ_4Y5vGhaCjnAxd1l5qxPCMVb18cD0M7ZXfbQhrszZ97TECZ-yy_F3FWberb6ddehN7vlimDxJ0TqbW"></script>
+                            <div id="paypal-button-container">
+
+                                
+                            </div>
+                            <script>
+                            document.addEventListener("DOMContentLoaded", function(event) {
+                            paypal.Buttons({
+                                // Set up the transaction
+                                createOrder: function(data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                    amount: {
+                                        value: '10.00' // Replace with the amount to be charged
+                                    }
+                                    }]
+                                });
+                                },
+                                // Finalize the transaction after payer approval
+                                onApprove: function(data, actions) {
+                                return actions.order.capture().then(function(details) {
+                                    alert('Transaction completed by ' + details.payer.name.given_name);
+                                    // You can redirect the user or perform other actions after payment
+                                });
+                                },
+                                // Handle payment error or cancellation
+                                onError: function(err) {
+                                console.error('Payment error:', err);
+                                alert('There was an error processing your payment.');
+                                },
+                                onCancel: function(data) {
+                                alert('Payment was cancelled.');
+                                }}
+                            }).render('#paypal-button-container'); // Render the PayPal button into the container
+                            </script>
+
+
+
+
+
                     
 
                     
