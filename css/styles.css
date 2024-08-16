@@ -4009,7 +4009,18 @@ td:last-child {
 	}
 }
 
+/* payment page */
 
+#pay{
+	background-color:white;
+	color: #181818;
+	padding-top: 23rem;
+}
+
+#pay1{
+	color: hsla(35, 87%, 29%, 1);
+}
+/* end */
 
 /* ===================================================================
  * # EXPERTISE
